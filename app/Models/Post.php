@@ -16,7 +16,7 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'user_origin_id');
+        return $this->hasMany(Comment::class, 'id');
     }
 
     public static function search($search)
