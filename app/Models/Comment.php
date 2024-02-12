@@ -16,7 +16,7 @@ class Comment extends Model
         'comment',
     ];
 
-    public function user()
+    public function userOrigin()
     {
         return $this->belongsTo(User::class, 'user_origin_id');
     }
@@ -26,7 +26,7 @@ class Comment extends Model
         return $this->belongsTo(Post::class, 'post_id');
     }
 
-    public function commentTarget()
+    public function userTarget()
     {
         return $this->belongsTo(Post::class, 'user_target_id');
     }
