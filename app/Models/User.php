@@ -40,6 +40,15 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user_origin_id');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
+    }
 }
