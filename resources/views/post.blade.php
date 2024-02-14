@@ -1,23 +1,22 @@
 @extends('master')
 
 @section('header-intro')
-<h2>{{ $post->title }}</h2>
-<p>Autor: {{ $post->user->fullName }} - {{ $post->comments->count() }} comentários</p>
+<!-- <p>Autor: {{ $post->user->name }} - {{ $post->comments()->count() }} comentários</p> -->
 @endsection
 
 
 @section('main')
 
 <div id="content-post">
-    <p>{{ $post->content }}</p>
+    <p>{{ $post->description }}</p>
 </div>
 
 <hr>
-  
+
 @if (auth()->check())
-    
+
 @if (session()->has('error_create_comment'))
-    <span>{{ session()->get('error_create_comment') }}</span>    
+    <span>{{ session()->get('error_create_comment') }}</span>
 @endif
 
 <div class="text-center">
@@ -33,9 +32,9 @@
 @endif
 
 <ul id="comments">
-    @forelse ($post->comments as $comment)
-        <li>{{ $comment->comment }} - Autor: {{ $comment->user->fullName }} 
-            @if (auth()->check() && auth()->user()->id === $comment->user->id)
+    @forelse ($post->comments() as $comment)
+        <li>{{ $comment->comment }} - Autor: {{ $comment->user->name }}
+            @if (auth()->check() && auth()->user->id === $comment->user()->id)
                 | <a href="{{ route('comment.destroy', $comment->id) }}">Deletar</a></li>
             @endif
     @empty

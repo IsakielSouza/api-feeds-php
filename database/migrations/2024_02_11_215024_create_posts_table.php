@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('slug');
             $table->string('image');
             $table->integer('total_likes');
-            $table->unsignedBigInteger('author_id');
-            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

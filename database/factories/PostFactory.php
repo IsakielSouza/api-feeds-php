@@ -27,7 +27,7 @@ class PostFactory extends Factory
             'slug' => Str::slug($title),
             'image' => str_replace('public', '', $image),
             'total_likes' => $this->faker->randomNumber(),
-            'author_id' => User::pluck('id')->random(),
+            'user_id' => User::pluck('id')->random(),
         ];
     }
 }

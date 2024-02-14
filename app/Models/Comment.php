@@ -11,23 +11,23 @@ class Comment extends Model
 
     protected $fillable = [
         'post_id',
-        'user_origin_id',
-        'user_target_id',
+        'user_id',
+        'comment_target_id',
         'comment',
     ];
 
-    public function userOrigin()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'user_origin_id');
+        return $this->belongsTo(User::class);
     }
 
     public function post()
     {
-        return $this->belongsTo(Post::class, 'post_id');
+        return $this->belongsTo(Post::class);
     }
 
-    public function userTarget()
+    public function comment()
     {
-        return $this->belongsTo(Post::class, 'user_target_id');
+        return $this->belongsTo(Post::class);
     }
 }

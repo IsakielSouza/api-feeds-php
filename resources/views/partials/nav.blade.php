@@ -25,7 +25,7 @@
       @if (auth()->guest())
       Visitante
       @else
-        {{ auth()->user()->fullName }} | <a href="{{ route('logout') }}">Logout</a>
+        {{ auth()->user()->name }} | <a href="{{ route('logout') }}">Logout</a>
       @endif
     </div>
   </div>

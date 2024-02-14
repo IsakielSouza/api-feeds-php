@@ -27,7 +27,7 @@
         <div class="post">
           <div class="card">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <img src="{{ $post->thumb }}" class="img-fluid" />
+              <img src="{{ $post->image }}" class="img-fluid" />
               <a href="#!">
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
               </a>
@@ -35,9 +35,9 @@
             <div class="card-body">
               <h5 class="card-title">{{ $post->title }}</h5>
               <p class="card-text">
-                {{ Str::limit($post->content, 60, '...') }}
+                {{ Str::limit($post->description, 60, '...') }}
               </p>
-              <p>Autor: {{ $post->user->fullName }} - {{ $post->comments->count() }} comentários</p>
+              <p>Autor: {{ $post->user->name }} - {{ $post->comments->count() }} comentários</p>
               <a href="{{ route('post', $post->slug) }}" class="btn btn-primary">Leia mais</a>
             </div>
           </div>

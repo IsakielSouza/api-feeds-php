@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,8 +21,7 @@ class CommentFactory extends Factory
     {
         return [
             'post_id' => Post::pluck('id')->random(),
-            'user_origin_id' => User::pluck('id')->random(),
-            'user_target_id' => User::pluck('id')->random(),
+            'user_id' => User::pluck('id')->random(),
             'comment' => $this->faker->paragraph(2),
             'total_likes' => $this->faker->randomNumber(),
         ];
