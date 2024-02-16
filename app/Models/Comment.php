@@ -10,10 +10,13 @@ class Comment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'post_id',
         'user_id',
         'comment_target_id',
         'comment',
+        'total_likes',
+        'created_at',
     ];
 
     public function user()
