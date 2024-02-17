@@ -11,16 +11,8 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
     protected static ?string $password;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         $avatar =  $this->faker->image('public/images/users', 640, 480);
@@ -28,16 +20,13 @@ class UserFactory extends Factory
             'name' => $this->faker->firstName(),
             'email' => $this->faker->unique()->safeEmail(),
             'avatar' => str_replace('public', '', $avatar),
-            'password' => bcrypt('123'),
+            'password' => bcrypt('123456'),
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn () => [
             'email_verified_at' => null,
         ]);
     }

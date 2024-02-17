@@ -16,19 +16,16 @@ class PostResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $totalComments = Comment::where('post_id', $this->id)->count();
-
         return [
             'id' => $this->id,
-            'userId' => $this->user_id,
+            'authorId' => $this->author_id,
             'title' => $this->title,
             'description' => $this->description,
             'type' => $this->type,
-            'slug' => $this->slug,
-            'image' => $this->image,
-            'totalLikes' => $this->total_likes,
-            'totalComments' => $totalComments,
+            'likes' => $this->likes,
+            'totalComments' => $this->comments->count(),
             'createdAt' => Carbon::make($this->created_at)->format('Y-m-d'),
+            'comments'  => CommentResource::collection($this->comments)
         ];
     }
 }

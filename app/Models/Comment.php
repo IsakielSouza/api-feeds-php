@@ -4,33 +4,31 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'post_id',
-        'user_id',
-        'comment_target_id',
-        'comment',
-        'total_likes',
-        'created_at',
+        'parent_id',
+        'body',
+        'likes'
     ];
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function post()
+    public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
 
-    public function comment()
+    public function replies()
     {
-        return $this->belongsTo(Post::class);
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 }

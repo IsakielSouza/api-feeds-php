@@ -9,10 +9,19 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'author_id',
+        'description',
+        'type',
+        'title',
+        'likes',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 
     public function comments()
     {

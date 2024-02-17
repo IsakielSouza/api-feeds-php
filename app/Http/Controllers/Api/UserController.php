@@ -11,9 +11,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::with(['posts.comments.replies'])->get();
 
-        return UserResource::collection($users);
+        return $users;
     }
 
     public function store(StoreUpdateUserRequest $request)

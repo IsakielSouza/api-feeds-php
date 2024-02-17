@@ -1,0 +1,1 @@
+{"id":1,"userId":1,"title":"first post","description":null,"type":null,"slug":null,"image":null,"totalLikes":null,"totalComments":2,"createdAt":"2024-02-16"}{"id":1,"userId":1,"title":"first post","description":null,"type":null,"slug":null,"image":null,"totalLikes":null,"totalComments":2,"createdAt":"2024-02-16"}
